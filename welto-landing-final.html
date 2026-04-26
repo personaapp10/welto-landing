@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welto — Trova clienti ogni giorno</title>
+<meta name="description" content="La piattaforma italiana per freelance, SMM, web designer e consulenti. Opportunità di lavoro ogni mattina, AI Writer e CRM semplice. €29/mese.">
+<meta name="keywords" content="freelance italia, trovare clienti, opportunità lavoro, social media manager, web designer, consulente">
+<meta property="og:title" content="Welto — Trova clienti ogni giorno">
+<meta property="og:description" content="Opportunità di lavoro ogni mattina selezionate per te. AI Writer, CRM e reminder. Per freelance italiani.">
+<meta property="og:url" content="https://welto.it">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://welto.it">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #07070C;
+    --bg2: #0F0F18;
+    --bg3: #141420;
+    --card: #11111C;
+    --border: #1E1E2E;
+    --border2: #2A2A3E;
+    --violet: #7C5CFF;
+    --violet-light: #A389FF;
+    --violet-dim: rgba(124,92,255,0.12);
+    --violet-glow: rgba(124,92,255,0.25);
+    --text: #F0EFFF;
+    --muted: #8888AA;
+    --dim: #44445A;
+    --green: #22C55E;
+    --red: #FF4D6D;
+    --amber: #F59E0B;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+    background: rgba(7,7,12,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px; font-weight: 700; letter-spacing: -0.5px;
+    color: var(--text); text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .logo-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--violet);
+    box-shadow: 0 0 12px var(--violet);
+  }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .btn-nav {
+    background: var(--violet); color: #fff; border: none;
+    padding: 9px 20px; border-radius: 10px; font-size: 14px; font-weight: 500;
+    cursor: pointer; text-decoration: none; transition: all 0.2s;
+    box-shadow: 0 4px 20px var(--violet-glow);
+  }
+  .btn-nav:hover { background: var(--violet-light); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-glow {
+    position: absolute; top: 20%; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,92,255,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--violet-dim); border: 0.5px solid rgba(124,92,255,0.3);
+    color: var(--violet-light); font-size: 13px; font-weight: 500;
+    padding: 6px 16px; border-radius: 99px; margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .live-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 800; line-height: 1.05; letter-spacing: -2px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--violet) 0%, var(--violet-light) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    font-size: clamp(16px, 2.5vw, 20px); color: var(--muted);
+    max-width: 560px; margin: 0 auto 40px;
+    font-weight: 300; line-height: 1.7;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-cta {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+    margin-bottom: 60px;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--violet); color: #fff;
+    padding: 14px 28px; border-radius: 12px; font-size: 16px; font-weight: 500;
+    text-decoration: none; border: none; cursor: pointer;
+    box-shadow: 0 8px 32px var(--violet-glow);
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--violet-light); transform: translateY(-2px); box-shadow: 0 12px 40px var(--violet-glow); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--text);
+    padding: 14px 28px; border-radius: 12px; font-size: 16px; font-weight: 500;
+    text-decoration: none; border: 0.5px solid var(--border2); cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--violet); color: var(--violet-light); }
+
+  .hero-social {
+    display: flex; align-items: center; gap: 8px;
+    color: var(--muted); font-size: 13px;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .avatars { display: flex; }
+  .avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid var(--bg);
+    background: linear-gradient(135deg, var(--violet), var(--violet-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 600; color: #fff;
+    margin-left: -8px;
+  }
+  .avatar:first-child { margin-left: 0; }
+
+  /* ── APP PREVIEW ── */
+  .preview-section {
+    padding: 0 24px 100px;
+    display: flex; justify-content: center;
+  }
+  .preview-wrapper {
+    width: 100%; max-width: 900px;
+    background: var(--card);
+    border: 0.5px solid var(--border2);
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 0.5px var(--border);
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+  .preview-bar {
+    background: var(--bg3); border-bottom: 0.5px solid var(--border);
+    padding: 12px 16px; display: flex; align-items: center; gap: 8px;
+  }
+  .preview-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .preview-dots { display: flex; gap: 6px; }
+  .preview-url {
+    flex: 1; text-align: center; font-size: 12px; color: var(--dim);
+  }
+  .preview-inner { padding: 24px; }
+  .opp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .opp-card {
+    background: var(--bg2); border: 0.5px solid var(--border2);
+    border-radius: 14px; padding: 14px;
+  }
+  .opp-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .badge {
+    font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 99px;
+    letter-spacing: 0.3px;
+  }
+  .badge-smm { background: rgba(124,92,255,0.2); color: #A389FF; }
+  .badge-web { background: rgba(56,189,248,0.15); color: #7DD3FC; }
+  .badge-con { background: rgba(34,197,94,0.15); color: #86EFAC; }
+  .badge-seo { background: rgba(245,158,11,0.15); color: #FCD34D; }
+  .match { font-size: 11px; font-weight: 600; color: var(--green); }
+  .opp-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
+  .opp-desc { font-size: 11px; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+  .match-bar { height: 3px; background: var(--border); border-radius: 99px; margin-bottom: 10px; }
+  .match-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--violet), var(--violet-light)); }
+  .opp-meta { display: flex; gap: 10px; font-size: 10px; color: var(--muted); margin-bottom: 10px; }
+  .opp-actions { display: flex; gap: 6px; }
+  .btn-save {
+    flex: 1; background: var(--violet); color: #fff;
+    border: none; border-radius: 8px; padding: 6px; font-size: 11px; font-weight: 500;
+    cursor: pointer; text-align: center;
+  }
+  .btn-msg {
+    flex: 1; background: transparent; color: var(--text);
+    border: 0.5px solid var(--border2); border-radius: 8px; padding: 6px; font-size: 11px;
+    cursor: pointer; text-align: center;
+  }
+
+  @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+
+  /* ── STATS ── */
+  .stats-section {
+    padding: 60px 24px;
+    display: flex; justify-content: center;
+  }
+  .stats-inner {
+    display: flex; gap: 0; max-width: 800px; width: 100%;
+    background: var(--card); border: 0.5px solid var(--border2); border-radius: 20px;
+    overflow: hidden;
+  }
+  .stat-item {
+    flex: 1; padding: 32px 24px; text-align: center;
+    border-right: 0.5px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 40px; font-weight: 800; color: var(--text);
+    letter-spacing: -1px; display: block; margin-bottom: 4px;
+  }
+  .stat-num span { color: var(--violet); }
+  .stat-label { font-size: 13px; color: var(--muted); }
+
+  /* ── FEATURES ── */
+  .section {
+    padding: 100px 24px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    color: var(--violet); text-transform: uppercase; margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 48px); font-weight: 800;
+    letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 18px; color: var(--muted); font-weight: 300;
+    max-width: 520px; line-height: 1.7; margin-bottom: 60px;
+  }
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;
+  }
+  .feature-card {
+    background: var(--card); border: 0.5px solid var(--border2);
+    border-radius: 18px; padding: 28px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .feature-card:hover { border-color: rgba(124,92,255,0.4); transform: translateY(-4px); }
+  .feature-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    background: var(--violet-dim); border: 0.5px solid rgba(124,92,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 16px;
+  }
+  .feature-title { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .feature-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .feature-tag {
+    display: inline-block; margin-top: 14px;
+    font-size: 11px; font-weight: 600; color: var(--violet-light);
+    background: var(--violet-dim); padding: 3px 10px; border-radius: 99px;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-section {
+    padding: 100px 24px;
+    background: var(--bg2);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .how-inner { max-width: 900px; margin: 0 auto; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; margin-top: 60px; }
+  .step { padding: 32px; position: relative; }
+  .step:not(:last-child)::after {
+    content: '→'; position: absolute; right: -8px; top: 42px;
+    color: var(--dim); font-size: 20px;
+  }
+  .step-num {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--violet); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 16px;
+    margin-bottom: 16px;
+  }
+  .step-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; margin-bottom: 8px; }
+  .step-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* ── PRICING ── */
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px; max-width: 800px;
+  }
+  .price-card {
+    background: var(--card); border: 0.5px solid var(--border2);
+    border-radius: 20px; padding: 32px;
+  }
+  .price-card.featured {
+    border-color: var(--violet);
+    background: linear-gradient(135deg, #0F0F1E 0%, #111128 100%);
+    position: relative; overflow: hidden;
+  }
+  .price-card.featured::before {
+    content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--violet), var(--violet-light));
+  }
+  .popular-badge {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--violet); color: #fff;
+    font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 99px;
+  }
+  .plan-name { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .plan-price {
+    font-family: 'Syne', sans-serif; font-size: 44px; font-weight: 800;
+    letter-spacing: -2px; margin-bottom: 4px;
+  }
+  .plan-price span { font-size: 18px; font-weight: 500; color: var(--muted); }
+  .plan-period { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+  .plan-features { list-style: none; margin-bottom: 28px; }
+  .plan-features li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--muted); padding: 6px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .plan-features li:last-child { border-bottom: none; }
+  .plan-features li .check { color: var(--green); font-size: 13px; flex-shrink: 0; }
+  .plan-features li .cross { color: var(--dim); font-size: 13px; flex-shrink: 0; }
+  .plan-features li.active { color: var(--text); }
+  .btn-plan {
+    width: 100%; padding: 13px; border-radius: 12px;
+    font-size: 15px; font-weight: 500; cursor: pointer; text-align: center;
+    text-decoration: none; display: block; transition: all 0.2s;
+  }
+  .btn-plan-primary {
+    background: var(--violet); color: #fff; border: none;
+    box-shadow: 0 6px 24px var(--violet-glow);
+  }
+  .btn-plan-primary:hover { background: var(--violet-light); transform: translateY(-1px); }
+  .btn-plan-ghost {
+    background: transparent; color: var(--text);
+    border: 0.5px solid var(--border2);
+  }
+  .btn-plan-ghost:hover { border-color: var(--violet); color: var(--violet-light); }
+
+  /* ── TESTIMONIALS ── */
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .testi-card {
+    background: var(--card); border: 0.5px solid var(--border2);
+    border-radius: 18px; padding: 24px;
+  }
+  .testi-stars { color: var(--amber); font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
+  .testi-text { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 20px; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--violet), var(--violet-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: #fff;
+  }
+  .testi-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .testi-role { font-size: 12px; color: var(--dim); }
+
+  /* ── WAITLIST ── */
+  .waitlist-section {
+    padding: 100px 24px;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .waitlist-glow {
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 300px;
+    background: radial-gradient(ellipse, rgba(124,92,255,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .waitlist-box {
+    background: var(--card); border: 0.5px solid var(--border2);
+    border-radius: 24px; padding: 48px; max-width: 560px; width: 100%;
+    position: relative; z-index: 1;
+  }
+  .waitlist-box h2 {
+    font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800;
+    letter-spacing: -1px; margin-bottom: 12px;
+  }
+  .waitlist-box p { font-size: 15px; color: var(--muted); margin-bottom: 28px; }
+  .waitlist-form { display: flex; gap: 10px; flex-wrap: wrap; }
+  .waitlist-input {
+    flex: 1; min-width: 200px;
+    background: var(--bg2); border: 0.5px solid var(--border2);
+    border-radius: 12px; padding: 13px 16px;
+    font-size: 15px; color: var(--text); outline: none;
+    transition: border-color 0.2s; font-family: 'Inter', sans-serif;
+  }
+  .waitlist-input:focus { border-color: var(--violet); }
+  .waitlist-input::placeholder { color: var(--dim); }
+  .btn-waitlist {
+    background: var(--violet); color: #fff; border: none;
+    padding: 13px 24px; border-radius: 12px; font-size: 15px; font-weight: 500;
+    cursor: pointer; white-space: nowrap;
+    box-shadow: 0 6px 24px var(--violet-glow); transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-waitlist:hover { background: var(--violet-light); transform: translateY(-1px); }
+  .waitlist-note { font-size: 12px; color: var(--dim); margin-top: 16px; }
+  .success-msg {
+    display: none; color: var(--green); font-size: 15px;
+    font-weight: 500; padding: 12px;
+    background: rgba(34,197,94,0.1); border-radius: 10px;
+    border: 0.5px solid rgba(34,197,94,0.2); margin-top: 12px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 40px 40px;
+    border-top: 0.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: var(--dim); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--muted); }
+  .footer-copy { font-size: 12px; color: var(--dim); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .stats-inner { flex-direction: column; }
+    .stat-item { border-right: none; border-bottom: 0.5px solid var(--border); }
+    .stat-item:last-child { border-bottom: none; }
+    .step::after { display: none; }
+    .steps { gap: 0; }
+    footer { flex-direction: column; text-align: center; }
+    .waitlist-box { padding: 32px 24px; }
+    .opp-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    welto
+    <span class="logo-dot"></span>
+  </a>
+  <div class="nav-links">
+    <a href="#features">Funzionalità</a>
+    <a href="#come-funziona">Come funziona</a>
+    <a href="#prezzi">Prezzi</a>
+  </div>
+  <a href="https://app.welto.it" class="btn-nav" target="_blank">Inizia gratis →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge">
+    <span class="live-dot"></span>
+    Nuove opportunità ogni mattina — aggiornate alle 7:00
+  </div>
+  <h1>Trova clienti<br><em>ogni giorno.</em></h1>
+  <p>La piattaforma italiana per freelance, SMM, web designer e consulenti che vogliono smettere di cercare e iniziare a scegliere.</p>
+  <div class="hero-cta">
+    <a href="https://app.welto.it" class="btn-primary" target="_blank">
+      Inizia gratis — 7 giorni ✨
+    </a>
+    <a href="#come-funziona" class="btn-secondary">Come funziona →</a>
+  </div>
+  <div class="hero-social">
+    <div class="avatars">
+      <div class="avatar">MR</div>
+      <div class="avatar">SF</div>
+      <div class="avatar">LC</div>
+      <div class="avatar">GV</div>
+    </div>
+    <span style="color: var(--muted); font-size: 13px;">Già <strong style="color: var(--text);">247 professionisti</strong> italiani trovano clienti con Welto</span>
+  </div>
+</section>
+
+<!-- APP PREVIEW -->
+<section class="preview-section">
+  <div class="preview-wrapper">
+    <div class="preview-bar">
+      <div class="preview-dots">
+        <div class="preview-dot" style="background:#FF5F57"></div>
+        <div class="preview-dot" style="background:#FFBD2E"></div>
+        <div class="preview-dot" style="background:#28C840"></div>
+      </div>
+      <div class="preview-url">app.welto.it · Dashboard</div>
+    </div>
+    <div class="preview-inner">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:2px;">DOMENICA 26 APRILE 2026</div>
+          <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;">Buongiorno Mirko 👋</div>
+        </div>
+        <div style="background:var(--violet-dim);border:0.5px solid rgba(124,92,255,0.3);color:var(--violet-light);font-size:11px;font-weight:600;padding:4px 12px;border-radius:99px;display:flex;align-items:center;gap:6px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#22C55E;display:inline-block;"></span>LIVE
+        </div>
+      </div>
+      <div class="opp-grid">
+        <div class="opp-card">
+          <div class="opp-head">
+            <span class="badge badge-smm">Social Media</span>
+            <span class="match">Match 97%</span>
+          </div>
+          <div class="opp-title">Gestione social per studio legale Milano</div>
+          <div class="opp-desc">Studio legale cerca SMM per LinkedIn e Instagram. 3 post/settimana, reportistica mensile.</div>
+          <div class="match-bar"><div class="match-fill" style="width:97%"></div></div>
+          <div class="opp-meta"><span>💰 €900/mese</span><span>📍 Milano</span><span>🕒 2h fa</span></div>
+          <div class="opp-actions">
+            <div class="btn-save">★ Salva</div>
+            <div class="btn-msg">✉ Scrivi</div>
+          </div>
+        </div>
+        <div class="opp-card">
+          <div class="opp-head">
+            <span class="badge badge-web">Web Design</span>
+            <span class="match">Match 91%</span>
+          </div>
+          <div class="opp-title">Restyling sito per ristorante gourmet Roma</div>
+          <div class="opp-desc">Ristorante stellato cerca nuovo sito con prenotazioni online, menù interattivo e gallery.</div>
+          <div class="match-bar"><div class="match-fill" style="width:91%"></div></div>
+          <div class="opp-meta"><span>💰 €1.400</span><span>📍 Roma</span><span>🕒 4h fa</span></div>
+          <div class="opp-actions">
+            <div class="btn-save">★ Salva</div>
+            <div class="btn-msg">✉ Scrivi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num">8<span>+</span></span>
+      <span class="stat-label">opportunità nuove ogni giorno</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">€<span>29</span></span>
+      <span class="stat-label">al mese, tutto incluso</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">247<span>+</span></span>
+      <span class="stat-label">professionisti italiani attivi</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">3<span>min</span></span>
+      <span class="stat-label">per rispondere a un lead con l'AI</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-label">Funzionalità</div>
+  <h2 class="section-title">Tutto quello che ti serve<br>per trovare clienti</h2>
+  <p class="section-sub">Smetti di perdere ore su LinkedIn e Facebook. Welto raccoglie le opportunità giuste per te e ti aiuta a rispondere in pochi minuti.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-title">Feed opportunità giornaliero</div>
+      <div class="feature-desc">Ogni mattina alle 7:00 trovi nuove opportunità selezionate in base al tuo profilo professionale. Niente più ore a cercare su LinkedIn.</div>
+      <span class="feature-tag">Aggiornato ogni giorno</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✉️</div>
+      <div class="feature-title">AI Writer per i tuoi messaggi</div>
+      <div class="feature-desc">Scrivi cold email, follow-up e proposte commerciali in italiano in 30 secondi. L'AI conosce il tuo profilo e personalizza ogni messaggio.</div>
+      <span class="feature-tag">Claude AI integrato</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">👥</div>
+      <div class="feature-title">CRM semplice</div>
+      <div class="feature-desc">Traccia ogni contatto dalla prima email al contratto firmato. Kanban board con 5 colonne, note, timeline e scheda cliente completa.</div>
+      <span class="feature-tag">Zero complessità</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⏰</div>
+      <div class="feature-title">Reminder follow-up</div>
+      <div class="feature-desc">Non dimenticare mai di ricontattare un cliente. L'app ti ricorda chi devi seguire oggi, con collegamento diretto all'AI Writer.</div>
+      <span class="feature-tag">Non perdere lead</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">Dashboard con KPI</div>
+      <div class="feature-desc">Pipeline aperta, lead attivi, follow-up di oggi. Una schermata per capire subito dove sei con il tuo business e cosa fare.</div>
+      <span class="feature-tag">Visione completa</span>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🇮🇹</div>
+      <div class="feature-title">100% italiano</div>
+      <div class="feature-desc">Opportunità da LinkedIn, Malt, gruppi Facebook e Telegram italiani. Messaggi scritti in italiano corretto. Supporto in italiano.</div>
+      <span class="feature-tag">Fatto per noi</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="come-funziona">
+  <div class="how-inner">
+    <div class="section-label">Come funziona</div>
+    <h2 class="section-title">Dal mattino al cliente<br>in 4 passi</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Crea il tuo profilo</div>
+        <div class="step-desc">Dici chi sei e che tipo di clienti cerchi. L'AI configura il feed in base alla tua categoria e città.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Vedi le opportunità</div>
+        <div class="step-desc">Ogni mattina apri la dashboard e trovi 8-10 opportunità nuove selezionate per te con score di match.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Scrivi con l'AI</div>
+        <div class="step-desc">Click su "Scrivi messaggio" → l'AI genera una cold email personalizzata in 10 secondi. Copi e invii.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Traccia e chiudi</div>
+        <div class="step-desc">Aggiungi il contatto al CRM, imposta i reminder, segui la trattativa fino alla firma del contratto.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="prezzi">
+  <div class="section-label">Prezzi</div>
+  <h2 class="section-title">Semplice e trasparente</h2>
+  <p class="section-sub">Nessun costo nascosto. Cancelli quando vuoi. Se non trovi almeno un cliente nel primo mese, ti rimborsiamo.</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="plan-name">Gratuito</div>
+      <div class="plan-price">€0</div>
+      <div class="plan-period">per sempre, con limiti</div>
+      <ul class="plan-features">
+        <li class="active"><span class="check">✓</span> 3 opportunità al giorno</li>
+        <li class="active"><span class="check">✓</span> 3 messaggi AI al mese</li>
+        <li class="active"><span class="check">✓</span> CRM fino a 3 contatti</li>
+        <li><span class="cross">✗</span> Feed completo illimitato</li>
+        <li><span class="cross">✗</span> AI Writer illimitato</li>
+        <li><span class="cross">✗</span> Reminder illimitati</li>
+      </ul>
+      <a href="#waitlist" class="btn-plan btn-plan-ghost">Inizia gratis</a>
+    </div>
+    <div class="price-card featured">
+      <div class="popular-badge">Più scelto</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">€29 <span>/mese</span></div>
+      <div class="plan-period">cancelli quando vuoi · nessun vincolo</div>
+      <ul class="plan-features">
+        <li class="active"><span class="check">✓</span> Opportunità illimitate ogni giorno</li>
+        <li class="active"><span class="check">✓</span> AI Writer senza limiti</li>
+        <li class="active"><span class="check">✓</span> CRM completo illimitato</li>
+        <li class="active"><span class="check">✓</span> Reminder illimitati</li>
+        <li class="active"><span class="check">✓</span> Statistiche avanzate</li>
+        <li class="active"><span class="check">✓</span> Supporto prioritario in italiano</li>
+      </ul>
+      <a href="https://app.welto.it" class="btn-plan btn-plan-primary" target="_blank">Inizia — 7 giorni gratis →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="padding-top: 0;">
+  <div class="section-label">Testimonianze</div>
+  <h2 class="section-title" style="margin-bottom: 48px;">Cosa dicono i nostri utenti</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"In due settimane ho trovato 3 nuovi clienti SMM. Prima perdevo ore su LinkedIn, ora apro Welto la mattina e ho già tutto pronto."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">SF</div>
+        <div>
+          <div class="testi-name">Sara F.</div>
+          <div class="testi-role">Social Media Manager · Milano</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"L'AI Writer mi ha cambiato la vita. Le cold email che scrivevo io venivano ignorate, quelle dell'AI hanno un tasso di risposta del 40%."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">LC</div>
+        <div>
+          <div class="testi-name">Luca C.</div>
+          <div class="testi-role">Web Designer · Roma</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Finalmente uno strumento pensato per i freelance italiani. Il CRM è semplicissimo e i reminder mi hanno fatto chiudere 2 trattative che stavo per perdere."</div>
+      <div class="testi-author">
+        <div class="testi-avatar">GV</div>
+        <div>
+          <div class="testi-name">Giulia V.</div>
+          <div class="testi-role">Consulente Marketing · Torino</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="waitlist-section" id="waitlist">
+  <div class="waitlist-glow"></div>
+  <div class="waitlist-box">
+    <div style="font-size:40px;margin-bottom:16px;">🚀</div>
+    <h2>Inizia a trovare<br>clienti oggi</h2>
+    <p>Unisciti a 247 professionisti italiani che usano Welto ogni mattina. 7 giorni gratuiti, nessuna carta richiesta.</p>
+    <div class="waitlist-form">
+      <input type="email" class="waitlist-input" placeholder="La tua email professionale" id="emailInput">
+      <button class="btn-waitlist" onclick="handleWaitlist()">Inizia gratis →</button>
+    </div>
+    <div class="success-msg" id="successMsg">
+      ✓ Perfetto! Controlla la tua email per iniziare.
+    </div>
+    <div class="waitlist-note">Nessuno spam. Cancelli quando vuoi. Pagamento sicuro via Stripe.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">welto<span style="color:var(--violet)">·</span></div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Termini</a>
+    <a href="#">Contatti</a>
+  </div>
+  <div class="footer-copy">© 2026 Welto · Fatto in Italia 🇮🇹</div>
+</footer>
+
+<script>
+function handleWaitlist() {
+  const email = document.getElementById('emailInput').value;
+  if (!email || !email.includes('@')) {
+    document.getElementById('emailInput').style.borderColor = '#FF4D6D';
+    setTimeout(() => document.getElementById('emailInput').style.borderColor = '', 2000);
+    return;
+  }
+  window.open('https://app.welto.it', '_blank');
+  document.getElementById('successMsg').style.display = 'block';
+  document.getElementById('emailInput').value = '';
+}
+document.getElementById('emailInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') handleWaitlist();
+});
+
+// Smooth scroll per i link anchor
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+</body>
+</html>
